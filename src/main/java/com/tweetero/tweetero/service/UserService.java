@@ -1,5 +1,9 @@
 package com.tweetero.tweetero.service;
 
+import java.util.Optional;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.tweetero.tweetero.dto.UserDTO;
@@ -14,9 +18,13 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public UserModel saveUser(UserDTO userDto) {
+    public Optional<UserModel> saveUser(UserDTO userDto) {
+        if (userRepository.existsByUsername(userDto.getUsername())) {
+            return Optional.empty();
+        }
         UserModel user = new UserModel(userDto);
-        return userRepository.save(user);
+        return Optional.of(userRepository.save(user));
     }
+
     
 }
