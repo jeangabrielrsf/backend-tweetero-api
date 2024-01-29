@@ -30,7 +30,7 @@ public class TweetService {
 
         TweetModel tweet = new TweetModel();
         tweet.setText(tweetDto.getText());
-        tweet.setUserModel(user.get());
+        tweet.setUser(user.get());
 
         return Optional.of(tweetRepository.save(tweet));
     }

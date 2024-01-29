@@ -29,6 +29,6 @@ public class TweetModel {
 
     @ManyToOne
     @JoinColumn(name = "users_id")
-    private UserModel userModel;
+    private UserModel user;
 
 }
