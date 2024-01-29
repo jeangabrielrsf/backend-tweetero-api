@@ -8,6 +8,7 @@ public class TweeteroApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TweeteroApplication.class, args);
+		System.out.println("Server running...");
 	}
 
 }
