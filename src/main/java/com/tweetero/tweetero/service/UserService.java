@@ -26,5 +26,9 @@ public class UserService {
         return Optional.of(userRepository.save(user));
     }
 
+    public Optional<UserModel> findUserById (Long id) {
+        return userRepository.findById(id);
+    }
+
     
 }

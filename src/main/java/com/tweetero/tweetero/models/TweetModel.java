@@ -1,5 +1,7 @@
 package com.tweetero.tweetero.models;
 
+import com.tweetero.tweetero.dto.TweetDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,4 +30,5 @@ public class TweetModel {
     @ManyToOne
     @JoinColumn(name = "users_id")
     private UserModel userModel;
+
 }
