@@ -6,9 +6,11 @@ import java.util.Optional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tweetero.tweetero.dto.TweetDTO;
@@ -29,6 +31,12 @@ public class TweetController {
     public ResponseEntity<Object> getAllTweets() {
         List<TweetModel> tweets = tweetService.findAllTweets();
         return ResponseEntity.ok().body(tweets);
+    }
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<Object> getAllUsersTweets(@PathVariable Long userId) {
+        List<TweetModel> userTweets = tweetService.findAllTweetsByUserId(userId);
+        return ResponseEntity.status(HttpStatus.OK).body(userTweets);
     }
 
     @PostMapping()
